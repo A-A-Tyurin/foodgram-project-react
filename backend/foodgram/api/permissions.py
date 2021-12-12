@@ -4,7 +4,7 @@ from django.utils.translation import gettext_lazy as _
 from rest_framework.permissions import SAFE_METHODS, BasePermission
 
 
-class AuthorOrAdmin(BasePermission):
+class AuthorOrAdminOrReadOnly(BasePermission):
     ''' Allows access only to admin or object author user. '''
 
     message = _('You can change only own content!')

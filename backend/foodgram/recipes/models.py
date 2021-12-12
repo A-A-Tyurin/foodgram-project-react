@@ -164,7 +164,6 @@ class RecipeIngredient(models.Model):
         verbose_name=_('Amount'),
         help_text=_('''The ingredient amount'''),
         validators=[MinValueValidator(1)],
-        default=1,
     )
 
     class Meta:

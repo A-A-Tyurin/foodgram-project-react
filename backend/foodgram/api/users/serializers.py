@@ -3,10 +3,14 @@
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
 
+from api import mixins
+
 User = get_user_model()
 
 
-class UserSerializer(serializers.ModelSerializer):
+class UserSerializer(
+        serializers.ModelSerializer,
+        mixins.SerializerMethodFieldMixin):
     ''' Serializer for :model:'users.User'. '''
     is_subscribed = serializers.SerializerMethodField()
 
@@ -22,7 +26,4 @@ class UserSerializer(serializers.ModelSerializer):
         )
 
     def get_is_subscribed(self, obj):
-        user = self.context['request'].user
-        return (False if user.is_anonymous else user.subscriptions
-                                                    .filter(id=obj.id)
-                                                    .exists())
+        return self.get_exists('subscriptions', id=obj.id)
