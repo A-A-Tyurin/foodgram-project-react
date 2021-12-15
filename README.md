@@ -8,14 +8,14 @@
 [![GitHub%20Actions](https://img.shields.io/badge/-GitHub%20Actions-464646?style=flat-square&logo=GitHub%20actions)](https://github.com/features/actions)
 [![Yandex.Cloud](https://img.shields.io/badge/-Yandex.Cloud-464646?style=flat-square&logo=Yandex.Cloud)](https://cloud.yandex.ru/)
 
-# Дипломный проект. Яндекс.Практикум. Python backend.
+# Дипломный проект. Python backend.
 
 ### Описание
 
 Сервис Foodgram для публикации рецептов. Пользователи могут 
 подписываться друг на друга, добавлять рецепты, скачивать список ингредиентов для покупки.
 
-Проект доступен по [http://foodgram.cf](http://foodgram.cf/)
+Проект доступен по адресу [http://foodgram.cf](http://foodgram.cf/)
 
 ### Технологии
 
