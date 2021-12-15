@@ -1,11 +1,10 @@
 ''' Serializers for 'recipes' API application. '''
 
 from django.utils.translation import gettext_lazy as _
-from drf_extra_fields.fields import Base64ImageField
 from rest_framework import serializers
 from rest_framework.validators import ValidationError
 
-from api import mixins
+from api import fields, mixins
 from api.users.serializers import UserSerializer
 from recipes.models import Ingredient, Recipe, RecipeIngredient, RecipeTag, Tag
 
@@ -75,7 +74,7 @@ class RecipeSerializer(
     ''' Serializer class for :model:'recipes.Recipe'. '''
     author = UserSerializer(read_only=True)
     ingredients = RecipeIngredientSerializer(many=True)
-    image = Base64ImageField(required=True)
+    image = fields.Base64ImageFieldRelativePath(required=True)
     tags = RecipeTagSerializer(many=True)
     is_favorited = serializers.SerializerMethodField()
     is_in_shopping_cart = serializers.SerializerMethodField()

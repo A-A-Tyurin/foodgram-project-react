@@ -203,7 +203,7 @@ class FavoriteRecipe(models.Model):
         constraints = [
             models.UniqueConstraint(
                 fields=['recipe', 'user'],
-                name='recipe_user_exists'
+                name='favorite_recipe_user_exists'
             ),
         ]
         verbose_name = _('Favorite recipe')
@@ -232,7 +232,7 @@ class RecipeShoppingCart(models.Model):
         constraints = [
             models.UniqueConstraint(
                 fields=['recipe', 'user'],
-                name='recipe_user_exists'
+                name='shopping_recipe_user_exists'
             ),
         ]
         verbose_name = verbose_name_plural = _('Shopping cart')

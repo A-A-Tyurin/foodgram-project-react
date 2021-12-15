@@ -41,7 +41,6 @@ class IngredientViewSet(mixins.RetrieveModelMixin,
 
 class RecipeViewSet(viewsets.ModelViewSet):
     ''' ViewSet for recipe actions. '''
-    http_method_names = ['get', 'post', 'put', 'delete']
     queryset = Recipe.objects.all()
     permission_classes = (AuthorOrAdminOrReadOnly,)
     serializer_class = RecipeSerializer
