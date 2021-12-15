@@ -1,5 +1,3 @@
-![yamdb_workflow](https://github.com/EvgeniyBudaev/foodgram-project-react/actions/workflows/foodgram_workflow.yml/badge.svg)
-
 [![Python](https://img.shields.io/badge/-Python-464646?style=flat-square&logo=Python)](https://www.python.org/)
 [![Django](https://img.shields.io/badge/-Django-464646?style=flat-square&logo=Django)](https://www.djangoproject.com/)
 [![Django REST Framework](https://img.shields.io/badge/-Django%20REST%20Framework-464646?style=flat-square&logo=Django%20REST%20Framework)](https://www.django-rest-framework.org/)
@@ -12,19 +10,14 @@
 
 # Дипломный проект. Яндекс.Практикум. Python backend.
 
-## Содержание
-- [Описание_проекта](#Описание_проекта)
-- [Технологии](#Технологии)
-
-### <a name="Описание_проекта">Описание</a>
+### Описание
 
 Сервис Foodgram для публикации рецептов. Пользователи могут 
-подписываться друг на друга, добавлять рецепты, скачать список покупок ингредиентов для добавленных в покупки 
-рецептов.
+подписываться друг на друга, добавлять рецепты, скачивать список ингредиентов для покупки.
 
-Проект доступен по [http://foodgram.cf/](http://foodgram.cf)
+Проект доступен по [http://foodgram.cf](http://foodgram.cf/)
 
-### <a name="Технологии">Технологии</a>
+### Технологии
 
 В проекте применяется 
 - **Django REST Framework**, 
