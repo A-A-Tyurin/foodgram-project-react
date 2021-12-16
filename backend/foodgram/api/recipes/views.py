@@ -62,7 +62,7 @@ class RecipeViewSet(viewsets.ModelViewSet):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     @action(detail=True, methods=['get', 'delete'],
-            permission_classes=(permissions.IsAuthenticated),
+            permission_classes=(permissions.IsAuthenticated,),
             name='favorite')
     def favorite(self, request, pk=None):
         ''' Process user favorite recipe actions. '''
@@ -71,7 +71,7 @@ class RecipeViewSet(viewsets.ModelViewSet):
         )
 
     @action(detail=True, methods=['get', 'delete'],
-            permission_classes=(permissions.IsAuthenticated),
+            permission_classes=(permissions.IsAuthenticated,),
             name='shopping_cart')
     def shopping_cart(self, request, pk=None):
         ''' Process user shopping cart actions. '''
@@ -80,7 +80,7 @@ class RecipeViewSet(viewsets.ModelViewSet):
         )
 
     @action(detail=False, methods=['get'],
-            permission_classes=(permissions.IsAuthenticated),
+            permission_classes=(permissions.IsAuthenticated,),
             name='download_shopping_cart')
     def download_shopping_cart(self, request, pk=None):
         ''' Get a file with a list of ingredients from shopping cart. '''
