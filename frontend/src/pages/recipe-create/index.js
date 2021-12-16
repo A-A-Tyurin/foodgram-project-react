@@ -91,11 +91,23 @@ const RecipeCreate = ({ onEdit }) => {
           .catch(err => {
             const { non_field_errors } = err
             if (non_field_errors) {
+              console.log(non_field_errors)
               alert(non_field_errors.join(', '))
             }
             const errors = Object.values(err)
             if (errors) {
-              alert(errors.join(', '))
+              let msg = ''
+              if (err.name)
+                msg += 'Название рецепта. ' + err.name[0] + '\n'
+              if (err.text)
+                msg += 'Описание рецепта. ' + err.text[0] + '\n'
+              if (err.cooking_time)
+                msg += 'Время приготовления. ' + err.cooking_time[0] + '\n'
+              if (err.ingredients)
+                err.ingredients.forEach(element => {
+                  msg += 'Кол-во ингредиента. ' + element.amount[0] + '\n'
+                });
+                alert(msg)
             }
           })
         }}

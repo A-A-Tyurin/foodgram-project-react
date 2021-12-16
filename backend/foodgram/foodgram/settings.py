@@ -94,6 +94,9 @@ DJOSER = {
         'user': 'api.users.serializers.UserSerializer',
         'current_user': 'api.users.serializers.UserSerializer',
     },
+    'PERMISSIONS': {
+        'user': ('djoser.permissions.CurrentUserOrAdminOrReadOnly',),
+    },
 }
 LANGUAGE_CODE = 'en'
 LANGUAGES = (

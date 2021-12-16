@@ -2,7 +2,7 @@
 
 from django.utils.translation import gettext_lazy as _
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import (filters, mixins, permissions, status, validators,
+from rest_framework import (mixins, permissions, status, validators,
                             viewsets)
 from rest_framework.decorators import action
 from rest_framework.response import Response
@@ -10,7 +10,7 @@ from rest_framework.response import Response
 from api.permissions import AuthorOrAdminOrReadOnly
 from api.utils import get_shopping_cart_file
 from recipes.models import Ingredient, Recipe, Tag
-from .filters import RecipeFilter
+from .filters import IngredientFilter, RecipeFilter
 from .serializers import (IngredientSerializer, RecipeSerializer,
                           RecipeShortSerializer, TagSerializer)
 
@@ -35,7 +35,7 @@ class IngredientViewSet(mixins.RetrieveModelMixin,
     serializer_class = IngredientSerializer
     pagination_class = None
     permission_classes = (permissions.AllowAny,)
-    filter_backends = (filters.SearchFilter,)
+    filter_backends = (IngredientFilter,)
     search_fields = ('^name',)
 
 
@@ -61,7 +61,9 @@ class RecipeViewSet(viewsets.ModelViewSet):
         serializer = RecipeShortSerializer(instance=recipe)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
-    @action(detail=True, methods=['get', 'delete'], name='favorite')
+    @action(detail=True, methods=['get', 'delete'],
+            permission_classes=(permissions.IsAuthenticated),
+            name='favorite')
     def favorite(self, request, pk=None):
         ''' Process user favorite recipe actions. '''
         return self._set_recipe_to_related(
@@ -69,6 +71,7 @@ class RecipeViewSet(viewsets.ModelViewSet):
         )
 
     @action(detail=True, methods=['get', 'delete'],
+            permission_classes=(permissions.IsAuthenticated),
             name='shopping_cart')
     def shopping_cart(self, request, pk=None):
         ''' Process user shopping cart actions. '''
@@ -77,6 +80,7 @@ class RecipeViewSet(viewsets.ModelViewSet):
         )
 
     @action(detail=False, methods=['get'],
+            permission_classes=(permissions.IsAuthenticated),
             name='download_shopping_cart')
     def download_shopping_cart(self, request, pk=None):
         ''' Get a file with a list of ingredients from shopping cart. '''
